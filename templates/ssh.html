@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{ data.titulo }}</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+
+    <div class="container my-5">
+        <h2 class="mb-4">Resultados</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Interface</th>
+                <th scope="col">IP-Address</th>
+                <th scope="col">OK?</th>
+                <th scope="col">Method</th>
+                <th scope="col">Status</th>
+                <th scope="col">Protocol</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data.inter %}
+            <tr>
+                <td>{{ item.interface }}</td>
+                <td>{{ item.ip_address }}</td>
+                <td>{{ item.ok }}</td>
+                <td>{{ item.method }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.protocol }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="row">
+    <a href="/SSHA" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-arrow-right"></i>
+        </span>
+        <span class="text">Carga archivo de Configuracion</span>
+    </a>
+    <a href="/SSHI" class="btn btn-success btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-arrow-right"></i>
+        </span>
+        <span class="text">Ver Configuracion de Arranque</span>
+    </a>
+</div>
+{% endblock %}

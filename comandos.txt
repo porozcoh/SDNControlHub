@@ -1,0 +1,25 @@
+interface GigabitEthernet2
+no shutdown
+exit
+interface GigabitEthernet2.10
+description desde Netmiko VSCode
+encapsulation dot1q 10
+ip add 192.168.10.1 255.255.255.0
+exit
+interface GigabitEthernet2.20
+description desde Netmiko VSCode
+encapsulation dot1q 20
+ip add 192.168.20.1 255.255.255.0
+exit
+ip dhcp excluded-add 192.168.10.1
+ip dhcp excluded-add 192.168.20.1
+ip dhcp pool vlan10
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 1.1.1.1
+exit
+ip dhcp pool vlan20
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.1
+dns-server 1.1.1.1
+exit
